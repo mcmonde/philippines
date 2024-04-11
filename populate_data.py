@@ -8,11 +8,8 @@ django.setup()
 from regions.models import Region
 from provinces.models import Province
 from municipalities.models import Municipality
-from cities.models import City
 from barangays.models import Barangay
 from districts.models import District
-from submunicipalities.models import SubMunicipality
-from sgu.models import Sgu
 
 
 def populate_database_from_csv(csv_file):
@@ -65,6 +62,7 @@ def populate_database_from_csv(csv_file):
             elif geo_level == 'Mun':
                 municipality, created = Municipality.objects.get_or_create(
                     code=psgc,
+                    type=geo_level,
                     province_id=province.id,
                     defaults={'name': row['Name'], 'old_names': row['Old names']}
                 )
@@ -73,8 +71,9 @@ def populate_database_from_csv(csv_file):
                 else:
                     print(f'MUNICIPALITY retrieved')
             elif geo_level == 'City':
-                municipality, created = City.objects.get_or_create(
+                municipality, created = Municipality.objects.get_or_create(
                     code=psgc,
+                    type=geo_level,
                     province_id=province.id,
                     defaults={'name': row['Name'], 'old_names': row['Old names']}
                 )
@@ -83,8 +82,9 @@ def populate_database_from_csv(csv_file):
                 else:
                     print(f'CITY retrieved')
             elif geo_level == 'SubMun':
-                municipality, created = SubMunicipality.objects.get_or_create(
+                municipality, created = Municipality.objects.get_or_create(
                     code=psgc,
+                    type=geo_level,
                     province_id=province.id,
                     defaults={'name': row['Name'], 'old_names': row['Old names']}
                 )
@@ -93,8 +93,9 @@ def populate_database_from_csv(csv_file):
                 else:
                     print(f'SUB-MUNICIPALITY retrieved')
             elif geo_level == 'SGU':
-                municipality, created = Sgu.objects.get_or_create(
+                municipality, created = Municipality.objects.get_or_create(
                     code=psgc,
+                    type=geo_level,
                     province_id=province.id,
                     defaults={'name': row['Name'], 'old_names': row['Old names']}
                 )

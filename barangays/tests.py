@@ -1,3 +1,7 @@
 from django.test import TestCase
+from .models import Barangay
 
-# Create your tests here.
+
+class BarangayTestCase(TestCase):
+    def setUp(self):
+        Barangay.objects.create(name='New Barangay', code='0101010101',)

@@ -40,11 +40,8 @@ INSTALLED_APPS = [
     'regions',
     'provinces',
     'municipalities',
-    'cities',
     'barangays',
     'districts',
-    'submunicipalities',
-    'sgu',
 ]
 
 MIDDLEWARE = [
