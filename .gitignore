@@ -1,0 +1,30 @@
+.idea
+# Ignore database files
+*.sqlite3
+
+# Ignore static files directory (collected static files should be served from a separate directory in production)
+staticfiles/
+
+# Ignore media files directory (user-uploaded files should be served from a separate directory in production)
+media/
+
+# Ignore local settings file
+local_settings.py
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+
+# Ignore logs
+*.log
+
+# Ignore development server PID file
+*.pid
+
+# Ignore virtual environment
+venv/
+
+# Ignore IDE files
+.vscode/
+
+**/__pycache__/
